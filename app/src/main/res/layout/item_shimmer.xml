@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ivImageShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/_8dp"
+        android:background="@color/colorShimmer"
+        app:cardCornerRadius="@dimen/_8dp"
+        app:cardElevation="4dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:background="@color/colorShimmer" />
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/tvTitleShimmer"
+        android:layout_width="120dp"
+        android:layout_height="16dp"
+        android:background="@color/colorShimmer"
+        android:layout_marginTop="@dimen/_8dp"
+        app:layout_constraintTop_toBottomOf="@id/ivImageShimmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:id="@+id/tvContentShimmer"
+        android:layout_width="160dp"
+        android:layout_height="16dp"
+        android:background="@color/colorShimmer"
+        android:layout_marginTop="@dimen/_8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleShimmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

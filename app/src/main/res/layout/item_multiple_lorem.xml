@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/_16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleMultipleLorem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textStyle="bold"
+        tools:text="Title Multiple Image 1"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvContentMultipleLorem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleMultipleLorem"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        tools:text="Lorem Ipsum Dolor Amid"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMultipleLorem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        android:clipToPadding="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvContentMultipleLorem"
+        tools:src="@drawable/ic_launcher_background"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
