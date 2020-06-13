@@ -2,15 +2,13 @@ package com.aryansa.rizqi.loremipsum.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.aryansa.rizqi.loremipsum.R
+import com.aryansa.rizqi.loremipsum.databinding.ItemMultipleImageBinding
 import com.aryansa.rizqi.loremipsum.utils.GlideApp
 
-class ImageAdapter(private val listImage: List<String>, val context: Context)
-    : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
+class ImageAdapter(private val listImage: List<String>, val context: Context) :
+    RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val image = listImage[position]
@@ -22,17 +20,18 @@ class ImageAdapter(private val listImage: List<String>, val context: Context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        return ImageViewHolder(
-            LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_multiple_image, parent, false))
+        val inflater = LayoutInflater.from(parent.context)
+        val imageBinding = ItemMultipleImageBinding.inflate(inflater, parent, false)
+        return ImageViewHolder(imageBinding)
     }
 
-    inner class ImageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
-        private val imageLorem: AppCompatImageView = itemView.findViewById(R.id.ivMultipleImage)
+    inner class ImageViewHolder(private val binding: ItemMultipleImageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(image: String) {
-            GlideApp.with(context).load(image).into(imageLorem)
+            with(binding) {
+                GlideApp.with(context).load(image).into(ivMultipleImage)
+            }
         }
     }
 }

@@ -4,7 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.aryansa.rizqi.loremipsum.R
+import com.aryansa.rizqi.loremipsum.databinding.ItemMultipleLoremBinding
+import com.aryansa.rizqi.loremipsum.databinding.ItemSingleLoremBinding
 import com.aryansa.rizqi.loremipsum.domain.model.remote.Data
 import com.aryansa.rizqi.loremipsum.presentation.viewholders.MultipleViewHolder
 import com.aryansa.rizqi.loremipsum.presentation.viewholders.SingleViewHolder
@@ -35,12 +36,12 @@ class LoremAdapter(list: List<Data>, val context: Context):
 
         when(viewType) {
             single -> {
-                val viewSingle = inflater.inflate(R.layout.item_single_lorem, parent, false)
+                val viewSingle = ItemSingleLoremBinding.inflate(inflater, parent, false)
                 viewHolder = SingleViewHolder(viewSingle, context)
             }
 
             multiple -> {
-                val viewMultiple = inflater.inflate(R.layout.item_multiple_lorem, parent, false)
+                val viewMultiple = ItemMultipleLoremBinding.inflate(inflater, parent, false)
                 viewHolder = MultipleViewHolder(viewMultiple, context)
             }
         }
