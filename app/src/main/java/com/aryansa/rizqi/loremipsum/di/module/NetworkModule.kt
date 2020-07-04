@@ -4,6 +4,8 @@ import com.aryansa.rizqi.loremipsum.BuildConfig
 import com.aryansa.rizqi.loremipsum.data.source.remote.LoremService
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,6 +23,7 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class NetworkModule {
 
     @Provides

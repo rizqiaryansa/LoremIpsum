@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.aryansa.rizqi.loremipsum.common.utils.GlideApp
 import com.aryansa.rizqi.loremipsum.databinding.ItemMultipleImageBinding
-import com.aryansa.rizqi.loremipsum.utils.GlideApp
 
 class ImageAdapter(private val listImage: List<String>, val context: Context) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {

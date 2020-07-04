@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aryansa.rizqi.loremipsum.databinding.ItemMultipleLoremBinding
 import com.aryansa.rizqi.loremipsum.databinding.ItemSingleLoremBinding
-import com.aryansa.rizqi.loremipsum.domain.model.remote.Data
+import com.aryansa.rizqi.loremipsum.domain.model.remote.LoremIpSumResponse
 import com.aryansa.rizqi.loremipsum.presentation.viewholders.MultipleViewHolder
 import com.aryansa.rizqi.loremipsum.presentation.viewholders.SingleViewHolder
 
@@ -16,9 +16,9 @@ class LoremAdapter(val context: Context):
     private val single = 0
     private val multiple = 1
 
-    private var listLorem: List<Data> = listOf()
+    private var listLorem: List<LoremIpSumResponse.Data> = listOf()
 
-    fun setLoremListData(loremList: List<Data>) {
+    fun setLoremListData(loremList: List<LoremIpSumResponse.Data>) {
         this.listLorem = loremList
         notifyDataSetChanged()
     }

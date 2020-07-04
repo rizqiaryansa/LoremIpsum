@@ -1,4 +1,4 @@
-package com.aryansa.rizqi.loremipsum.repository
+package com.aryansa.rizqi.loremipsum.data.repository
 
 import com.aryansa.rizqi.loremipsum.domain.model.remote.LoremIpSumResponse
 import com.aryansa.rizqi.loremipsum.data.source.remote.LoremService
@@ -10,7 +10,8 @@ interface LoremRepository {
 }
 
 class LoremRepositoryImpl @Inject
-constructor(private val service: LoremService): LoremRepository {
+constructor(private val service: LoremService):
+    LoremRepository {
 
     override fun fetchLorem(): Single<LoremIpSumResponse> {
         return service.getLorem()

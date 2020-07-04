@@ -1,4 +1,4 @@
-package com.aryansa.rizqi.loremipsum.utils.extensions
+package com.aryansa.rizqi.loremipsum.common.utils.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

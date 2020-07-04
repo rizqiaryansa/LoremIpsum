@@ -1,4 +1,4 @@
-package com.aryansa.rizqi.loremipsum.utils.extensions
+package com.aryansa.rizqi.loremipsum.common.utils.extensions
 
 import android.content.Context
 import android.view.View

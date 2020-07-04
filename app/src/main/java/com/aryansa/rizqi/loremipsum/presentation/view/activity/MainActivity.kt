@@ -2,52 +2,39 @@ package com.aryansa.rizqi.loremipsum.presentation.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aryansa.rizqi.loremipsum.databinding.ActivityMainBinding
-import com.aryansa.rizqi.loremipsum.domain.model.remote.Data
 import com.aryansa.rizqi.loremipsum.presentation.adapters.LoremAdapter
 import com.aryansa.rizqi.loremipsum.presentation.adapters.ShimmerAdapter
 import com.aryansa.rizqi.loremipsum.presentation.viewmodels.LoremViewModel
-import com.aryansa.rizqi.loremipsum.utils.ResultResponse
-import com.aryansa.rizqi.loremipsum.utils.extensions.gone
-import com.aryansa.rizqi.loremipsum.utils.extensions.observeData
-import com.aryansa.rizqi.loremipsum.utils.extensions.showToast
-import com.aryansa.rizqi.loremipsum.utils.extensions.visible
-import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
+import com.aryansa.rizqi.loremipsum.common.utils.ResultResponse
+import com.aryansa.rizqi.loremipsum.common.utils.extensions.gone
+import com.aryansa.rizqi.loremipsum.common.utils.extensions.observeData
+import com.aryansa.rizqi.loremipsum.common.utils.extensions.showToast
+import com.aryansa.rizqi.loremipsum.common.utils.extensions.visible
+import com.aryansa.rizqi.loremipsum.domain.model.remote.LoremIpSumResponse
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private lateinit var viewModelLorem: LoremViewModel
+    private val viewModelLorem: LoremViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
 
     private val adapterLorem by lazy { LoremAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewModelLorem = ViewModelProvider(this, viewModelFactory)
-            .get(LoremViewModel::class.java)
-
         setRecyclerView()
         viewModelLorem.getLorem()
-        viewModelLorem.getLorem()
-        viewModelLorem.getLorem()
-
         setShimmer()
-
         observeViewModel()
-
     }
 
     private fun setShimmer() {
@@ -75,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setLoremList(data: List<Data>) {
+    private fun setLoremList(data: List<LoremIpSumResponse.Data>) {
         adapterLorem.setLoremListData(data)
     }
 

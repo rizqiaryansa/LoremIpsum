@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aryansa.rizqi.loremipsum.databinding.ItemMultipleLoremBinding
-import com.aryansa.rizqi.loremipsum.domain.model.remote.Data
+import com.aryansa.rizqi.loremipsum.domain.model.remote.LoremIpSumResponse
 import com.aryansa.rizqi.loremipsum.presentation.adapters.ImageAdapter
 
 class MultipleViewHolder(
@@ -12,7 +12,7 @@ class MultipleViewHolder(
     val context: Context
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(data: Data) {
+    fun bind(data: LoremIpSumResponse.Data) {
         with(binding) {
             if (data.type == "multiple") {
                 tvTitleMultipleLorem.text = data.title
@@ -21,7 +21,7 @@ class MultipleViewHolder(
                 rvMultipleLorem.apply {
                     layoutManager =
                         LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                    adapter = ImageAdapter(data.media, context)
+                    adapter = data.media?.let { ImageAdapter(it, context) }
                 }
             }
         }
