@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aryansa.rizqi.loremipsum.databinding.ActivityMainBinding
+import com.aryansa.rizqi.loremipsum.domain.model.remote.Data
 import com.aryansa.rizqi.loremipsum.presentation.adapters.LoremAdapter
 import com.aryansa.rizqi.loremipsum.presentation.adapters.ShimmerAdapter
 import com.aryansa.rizqi.loremipsum.presentation.viewmodels.LoremViewModel
@@ -26,18 +27,21 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private val adapterLorem by lazy { LoremAdapter(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         viewModelLorem = ViewModelProvider(this, viewModelFactory)
             .get(LoremViewModel::class.java)
 
         setRecyclerView()
+        viewModelLorem.getLorem()
+        viewModelLorem.getLorem()
         viewModelLorem.getLorem()
 
         setShimmer()
@@ -59,10 +63,8 @@ class MainActivity : AppCompatActivity() {
             when (it) {
                 is ResultResponse.Success -> {
                     shimmerHide()
-                    if(it.responseData?.statusCode == 200) {
-                        rvLoremMain.apply {
-                            adapter = LoremAdapter(it.responseData.data, this@MainActivity)
-                        }
+                    if (it.responseData?.statusCode == 200) {
+                        setLoremList(it.responseData.data)
                     }
                 }
                 is ResultResponse.Failure -> {
@@ -73,10 +75,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setLoremList(data: List<Data>) {
+        adapterLorem.setLoremListData(data)
+    }
+
     private fun setRecyclerView() {
         binding.rvLoremMain.apply {
-            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = adapterLorem
         }
     }
 

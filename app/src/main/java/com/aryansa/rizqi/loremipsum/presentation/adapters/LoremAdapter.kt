@@ -10,13 +10,18 @@ import com.aryansa.rizqi.loremipsum.domain.model.remote.Data
 import com.aryansa.rizqi.loremipsum.presentation.viewholders.MultipleViewHolder
 import com.aryansa.rizqi.loremipsum.presentation.viewholders.SingleViewHolder
 
-class LoremAdapter(list: List<Data>, val context: Context):
+class LoremAdapter(val context: Context):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val single = 0
     private val multiple = 1
 
-    private var listLorem: List<Data> = list
+    private var listLorem: List<Data> = listOf()
+
+    fun setLoremListData(loremList: List<Data>) {
+        this.listLorem = loremList
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount(): Int = listLorem.size
 
